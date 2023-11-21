@@ -30,20 +30,3 @@ def get_users_playlists(token, user_id):
     result = get(url, headers=headers)
     json_result = json.loads(result.content)["items"]
     return json_result
-
-token = get_token()
-
-while True:
-
-    print("\n--Type exit at any time to leave program--\n")
-
-    artist = input("Input an artist to find their top 10 songs: ")
-
-    if artist.lower() == "exit":
-        break
-
-    find_artist = search_for_artist(token, artist)
-    find_songs = get_songs_by_artist(token, find_artist["id"])
-
-    for i, song in enumerate(find_songs):
-        print(f"{i+1}. {song['name']}")
