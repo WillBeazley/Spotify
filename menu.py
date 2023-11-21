@@ -25,6 +25,8 @@ while True:
         choices.append(song["name"])
         songID[song["name"]] = song["id"]
 
+    choices.append("none")
+
     questions = [
         inquirer.List(
             "song",
@@ -35,7 +37,10 @@ while True:
 
     song_choice = inquirer.prompt(questions)
 
-    url = youtube_search(song_choice["song"])
+    if song_choice['song'] == "none":
+        break
+
+    url = youtube_search(f"{song_choice['song']}, {artist}")
 
     YouTube(url).streams.filter(progressive=True).get_highest_resolution().download("Downloads")
 
