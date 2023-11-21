@@ -14,8 +14,8 @@ CLIENT_SECRET = {your spotify client secret}
 DEVELOPER_KEY = {your google developer_key}
 ```
 
-Both spotify keys can be found on your personal spotify api account (linked below)
+Both spotify keys can be found on your personal spotify api account | Link:
 [SPOTIFY FOR DEVELOPERS](https://developer.spotify.com/)
 
-The google key can be found on your personal google cloud account (linked below)
+The google key can be found on your personal google cloud account | Link:
 [GOOGLE CLOUD](https://console.cloud.google.com/welcome/new?authuser=1&project=enduring-grid-405811&supportedpurview=project)
