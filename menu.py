@@ -2,6 +2,7 @@ from spotifyExtractor import search_for_artist, get_songs_by_artist, get_token
 from googleExtractor import youtube_search
 from pprint import pprint
 import inquirer
+from pytube import YouTube
 
 token = get_token()
 
@@ -36,7 +37,6 @@ while True:
 
     url = youtube_search(song_choice["song"])
 
-    print(url)
+    YouTube(url).streams.filter(progressive=True).get_highest_resolution().download("Downloads")
 
-    #for i, song in enumerate(find_songs):
-    #    print(f"{i+1}. {song['name']}")
+    print(f"{url} successfully downloaded")
