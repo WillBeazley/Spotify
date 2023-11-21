@@ -1,6 +1,6 @@
 # Spotify song search
 
-Using the spotify api to search for an artists top 10 tracks
+Using the spotify api to download spotify songs
 
 ## token
 
