@@ -11,6 +11,9 @@ def playlists(search):
 
     result = search_for_playlist(token, search)
 
+    if result == None:
+        return None
+
     playlists = []
 
     for playlist in result:
@@ -61,6 +64,10 @@ def artists(artist):
         return None
 
     find_artist = search_for_artist(token, artist)
+
+    if find_artist == None:
+        return None
+
     find_songs = get_songs_by_artist(token, find_artist["id"])
 
     choices = []
@@ -84,6 +91,7 @@ def artists(artist):
 
     if song_choice["song"] == None:
         return None
+    
 
     url = youtube_search(f"{song_choice['song']}, {artist}")
 
@@ -95,13 +103,11 @@ def artists(artist):
 
 while True:
 
-    print("\n--Type exit at any time to leave program--\n")
-
     type = [
         inquirer.List(
             "type",
             message="Would you like to download a playlist or song?",
-            choices=["Playlist", "Song"],
+            choices=["Playlist", "Song", "Exit"],
         )
     ]
 
@@ -114,7 +120,8 @@ while True:
         song_choice = artists(artist)
 
         if song_choice == None:
-            break
+            print()
+            continue
 
     if decision["type"] == "Playlist":
         
@@ -123,6 +130,10 @@ while True:
         playlist_choice = playlists(playlist)
 
         if playlist_choice == None:
-            break
+            print()
+            continue
+
+    if decision["type"] == "Exit":
+        break
 
         
